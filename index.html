@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건강수명 예측 & 노후 준비 대시보드</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🩺 건강수명 예측 & 노후 준비 대시보드</h1>
+            <p class="subtitle">나의 미래 건강 연식과 준비상태를 가볍게 알아보자!</p>
+            <div class="disclaimer">
+                ⚠️ <strong>의료 조언이 아닙니다.</strong> 재미용·참고용 시뮬레이터입니다.
+            </div>
+        </header>
+
+        <!-- 입력 폼 섹션 -->
+        <section id="inputSection" class="input-section">
+            <form id="healthForm" class="health-form">
+                <!-- 기본 정보 -->
+                <div class="form-group">
+                    <h2>기본 정보</h2>
+                    <div class="input-row">
+                        <label for="age">나이</label>
+                        <input type="number" id="age" name="age" min="1" max="120" required>
+                    </div>
+                    <div class="input-row">
+                        <label>성별</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="sex" value="male" required>
+                                <span>남성</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sex" value="female" required>
+                                <span>여성</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sex" value="other" required>
+                                <span>기타</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 생활 습관 -->
+                <div class="form-group">
+                    <h2>생활 습관</h2>
+                    <div class="input-row">
+                        <label>흡연 여부</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="smoking" value="never" required>
+                                <span>안함</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="smoking" value="rare" required>
+                                <span>가끔</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="smoking" value="often" required>
+                                <span>자주</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="smoking" value="past" required>
+                                <span>과거 흡연</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <label>음주 빈도</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="alcohol" value="none" required>
+                                <span>안함</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="alcohol" value="week1" required>
+                                <span>주 1회</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="alcohol" value="week2_3" required>
+                                <span>주 2~3회</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="alcohol" value="daily" required>
+                                <span>거의 매일</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <label>운동 빈도</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="exercise" value="none" required>
+                                <span>거의 안함</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="exercise" value="week1_2" required>
+                                <span>주 1~2회</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="exercise" value="week3_5" required>
+                                <span>주 3~5회</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="exercise" value="daily" required>
+                                <span>매일</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <label>수면 시간</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="sleep" value="<5" required>
+                                <span>5시간 미만</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sleep" value="5_6" required>
+                                <span>5~6시간</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sleep" value="7_8" required>
+                                <span>7~8시간</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sleep" value="9plus" required>
+                                <span>9시간 이상</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 건강 상태 -->
+                <div class="form-group">
+                    <h2>건강 상태</h2>
+                    <div class="input-row">
+                        <label>만성질환</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="chronic" value="none" id="chronic-none">
+                                <span>없음</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="chronic" value="hypertension">
+                                <span>고혈압</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="chronic" value="diabetes">
+                                <span>당뇨</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="chronic" value="hyperlipidemia">
+                                <span>고지혈증</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <label>약 복용 여부</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="meds" value="yes" required>
+                                <span>예</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="meds" value="no" required>
+                                <span>아니오</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <label>체중 변화</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="weight" value="stable" required>
+                                <span>안정</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="weight" value="increase" required>
+                                <span>증가</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="weight" value="decrease" required>
+                                <span>감소</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <label>스트레스 수준</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="stress" value="low" required>
+                                <span>낮음</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="stress" value="mid" required>
+                                <span>보통</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="stress" value="high" required>
+                                <span>높음</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">건강수명 예측하기</button>
+            </form>
+        </section>
+
+        <!-- 결과 섹션 -->
+        <section id="resultSection" class="result-section hidden">
+            <!-- 건강수명 예상 -->
+            <div class="result-card main-result">
+                <h2>예상 건강수명</h2>
+                <div class="lifespan-display">
+                    <span class="age-number" id="predictedAge">--</span>
+                    <span class="age-unit">세</span>
+                </div>
+                <p class="years-remaining" id="yearsRemaining">남은 건강 연식: --년</p>
+            </div>
+
+            <!-- 현재 상태 요약 -->
+            <div class="result-card">
+                <h2>당신의 현재 상태</h2>
+                <div class="status-summary" id="statusSummary"></div>
+                <div class="score-display">
+                    <div class="score-item">
+                        <span class="score-label">건강수명 포인트</span>
+                        <span class="score-value" id="lifespanScore">--</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">리스크 포인트</span>
+                        <span class="score-value risk" id="riskScore">--</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">회복 가능 포인트</span>
+                        <span class="score-value improvement" id="improvementScore">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 개선하면 늘어나는 건강 포인트 -->
+            <div class="result-card">
+                <h2>개선하면 늘어나는 건강 포인트</h2>
+                <div class="improvement-list" id="improvementList"></div>
+                <p class="improvement-summary" id="improvementSummary"></p>
+            </div>
+
+            <!-- 노후 필수 체크리스트 -->
+            <div class="result-card">
+                <h2>노후 필수 체크리스트</h2>
+                <ul class="checklist" id="checklist">
+                    <li>✓ 연 1회 기본 건강검진</li>
+                    <li>✓ 혈압·혈당 정기 체크</li>
+                    <li>✓ 하루 30분 걷기</li>
+                    <li>✓ 근력운동 주 2회</li>
+                    <li>✓ 인간관계 2명 이상 유지 (사회 고립 리스크 ↓)</li>
+                    <li>✓ 보험/노후 재정 체크</li>
+                    <li>✓ 비상연락망 정리</li>
+                </ul>
+            </div>
+
+            <!-- 라이트 콘텐츠 -->
+            <div class="result-card">
+                <h2>건강 팁</h2>
+                <div class="tips-content">
+                    <div class="tip-item">
+                        <h3>아침 스트레칭 3가지</h3>
+                        <p>1. 목 돌리기 (좌우 10회)<br>2. 어깨 돌리기 (전후 10회)<br>3. 허리 굽히기 (10초 유지)</p>
+                    </div>
+                    <div class="tip-item">
+                        <h3>걷기 루틴 20분 버전</h3>
+                        <p>아침 10분 + 저녁 10분 걷기로 시작하세요. 점차 시간을 늘려가며 목표는 하루 30분입니다.</p>
+                    </div>
+                    <div class="tip-item">
+                        <h3>초기 만성질환 신호 체크리스트</h3>
+                        <p>✓ 자주 피곤함<br>✓ 소변 빈도 증가<br>✓ 손발 저림<br>✓ 시야 흐림<br>✓ 체중 급변</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 광고 슬롯 -->
+            <div class="ad-slot">
+                <p class="ad-label">추천 상품</p>
+                <div class="ad-placeholder">
+                    <p>건강기기, 검진센터, 실버케어 서비스 광고 영역</p>
+                    <p class="ad-note">(실제 서비스에서는 건강 관련 광고가 표시됩니다)</p>
+                </div>
+            </div>
+
+            <!-- 다시 계산하기 버튼 -->
+            <button class="reset-btn" onclick="resetForm()">다시 계산하기</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 헤더 */
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.disclaimer {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* 입력 섹션 */
+.input-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.form-group:last-of-type {
+    border-bottom: none;
+}
+
+.form-group h2 {
+    font-size: 20px;
+    color: #667eea;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #667eea;
+}
+
+.input-row {
+    margin-bottom: 20px;
+}
+
+.input-row label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 15px;
+}
+
+.input-row input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-row input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.radio-group,
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.radio-label,
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.radio-label:hover,
+.checkbox-label:hover {
+    background: #e8f0fe;
+    border-color: #667eea;
+}
+
+.radio-label input[type="radio"],
+.checkbox-label input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"]:checked + span,
+.checkbox-label input[type="checkbox"]:checked + span {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.radio-label:has(input[type="radio"]:checked),
+.checkbox-label:has(input[type="checkbox"]:checked) {
+    background: #e8f0fe;
+    border-color: #667eea;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* 결과 섹션 */
+.result-section {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.result-section.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.result-card h2 {
+    font-size: 22px;
+    color: #667eea;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* 메인 결과 카드 */
+.main-result {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.main-result h2 {
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.lifespan-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.age-number {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.age-unit {
+    font-size: 32px;
+    margin-left: 10px;
+    opacity: 0.9;
+}
+
+.years-remaining {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* 상태 요약 */
+.status-summary {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.score-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.score-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.score-label {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.score-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.score-value.risk {
+    color: #e74c3c;
+}
+
+.score-value.improvement {
+    color: #27ae60;
+}
+
+/* 개선 포인트 */
+.improvement-list {
+    margin-bottom: 20px;
+}
+
+.improvement-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.improvement-item strong {
+    color: #667eea;
+    font-size: 16px;
+}
+
+.improvement-item .points {
+    color: #27ae60;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.improvement-summary {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 10px;
+    color: #2e7d32;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* 체크리스트 */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* 건강 팁 */
+.tips-content {
+    display: grid;
+    gap: 15px;
+}
+
+.tip-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.tip-item h3 {
+    color: #667eea;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.tip-item p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* 광고 슬롯 */
+.ad-slot {
+    background: #f8f9fa;
+    border: 2px dashed #ccc;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ad-label {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ad-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.ad-note {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* 리셋 버튼 */
+.reset-btn {
+    width: 100%;
+    padding: 15px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.reset-btn:hover {
+    background: #5a6268;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .form-group h2 {
+        font-size: 18px;
+    }
+
+    .radio-group,
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .age-number {
+        font-size: 48px;
+    }
+
+    .age-unit {
+        font-size: 24px;
+    }
+
+    .score-display {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        padding: 20px 15px;
+    }
+}
+
