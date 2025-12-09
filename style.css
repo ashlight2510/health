@@ -373,6 +373,17 @@ body {
     padding: 30px 20px;
     text-align: center;
     margin-bottom: 20px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 카카오 애드핏 광고 영역 */
+.kakao_ad_area {
+    display: block !important;
+    margin: 0 auto;
 }
 
 .ad-label {

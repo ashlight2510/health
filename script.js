@@ -207,6 +207,13 @@ document.getElementById('healthForm').addEventListener('submit', function(e) {
     document.getElementById('inputSection').classList.add('hidden');
     document.getElementById('resultSection').classList.remove('hidden');
     
+    // 광고 초기화 (결과 섹션이 표시된 후)
+    setTimeout(() => {
+        if (window.daum && window.daum.ad && window.daum.ad.publish) {
+            window.daum.ad.publish();
+        }
+    }, 500);
+    
     // 결과 섹션으로 스크롤
     document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
 });
