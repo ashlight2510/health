@@ -382,8 +382,8 @@ body {
 
 /* 카카오 애드핏 광고 영역 */
 .kakao_ad_area {
-    display: block !important;
     margin: 0 auto;
+    text-align: center;
 }
 
 .ad-label {
