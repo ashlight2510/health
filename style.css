@@ -380,12 +380,6 @@ body {
     justify-content: center;
 }
 
-/* 카카오 애드핏 광고 영역 */
-.kakao_ad_area {
-    margin: 0 auto;
-    text-align: center;
-}
-
 .ad-label {
     font-size: 14px;
     color: #999;
@@ -460,4 +454,3 @@ body {
         padding: 20px 15px;
     }
 }
-

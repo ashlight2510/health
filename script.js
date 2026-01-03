@@ -294,17 +294,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 카카오 애드핏 광고 초기화
-    function initKakaoAds() {
-        if (window.daum && window.daum.ad && window.daum.ad.publish) {
-            window.daum.ad.publish();
-        } else {
-            // 스크립트가 아직 로드되지 않았으면 재시도
-            setTimeout(initKakaoAds, 500);
-        }
-    }
-    
-    // 페이지 로드 후 광고 초기화
-    setTimeout(initKakaoAds, 1000);
 });
-
