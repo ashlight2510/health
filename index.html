@@ -36,6 +36,33 @@
       }
     </style>
   <style>
+    .lang-switch {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      margin: 16px auto;
+    }
+
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+    }
+
+    .lang-switch button.active {
+      background: #10b981;
+      color: #0b1120;
+    }
+
     .adsense-block {
       margin: 16px 0;
       display: flex;
@@ -50,37 +77,42 @@
 </head>
 <body><div class="container">
         <header class="header">
-            <h1>🩺 건강수명 예측 & 노후 준비 대시보드</h1>
-            <p class="subtitle">나의 미래 건강 연식과 준비상태를 가볍게 알아보자!</p>
-            <div class="disclaimer">
+            <h1 data-i18n="heroTitle">🩺 건강수명 예측 & 노후 준비 대시보드</h1>
+            <p class="subtitle" data-i18n="subtitle">나의 미래 건강 연식과 준비상태를 가볍게 알아보자!</p>
+            <div class="disclaimer" data-i18n-html="disclaimer">
                 ⚠️ <strong>의료 조언이 아닙니다.</strong> 재미용·참고용 시뮬레이터입니다.
             </div>
         </header>
+
+        <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">한국어</button>
+            <button type="button" data-lang="en">English</button>
+        </div>
 
         <!-- 입력 폼 섹션 -->
         <section id="inputSection" class="input-section">
             <form id="healthForm" class="health-form">
                 <!-- 기본 정보 -->
                 <div class="form-group">
-                    <h2>기본 정보</h2>
+                    <h2 data-i18n="sectionBasic">기본 정보</h2>
                     <div class="input-row">
-                        <label for="age">나이</label>
+                        <label for="age" data-i18n="ageLabel">나이</label>
                         <input type="number" id="age" name="age" min="1" max="120" required>
                     </div>
                     <div class="input-row">
-                        <label>성별</label>
+                        <label data-i18n="sexLabel">성별</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="sex" value="male" required>
-                                <span>남성</span>
+                                <span data-i18n="maleLabel">남성</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="sex" value="female" required>
-                                <span>여성</span>
+                                <span data-i18n="femaleLabel">여성</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="sex" value="other" required>
-                                <span>기타</span>
+                                <span data-i18n="otherLabel">기타</span>
                             </label>
                         </div>
                     </div>
@@ -88,88 +120,88 @@
 
                 <!-- 생활 습관 -->
                 <div class="form-group">
-                    <h2>생활 습관</h2>
+                    <h2 data-i18n="sectionHabits">생활 습관</h2>
                     <div class="input-row">
-                        <label>흡연 여부</label>
+                        <label data-i18n="smokingLabel">흡연 여부</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="smoking" value="never" required>
-                                <span>안함</span>
+                                <span data-i18n="smokingNever">안함</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="smoking" value="rare" required>
-                                <span>가끔</span>
+                                <span data-i18n="smokingRare">가끔</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="smoking" value="often" required>
-                                <span>자주</span>
+                                <span data-i18n="smokingOften">자주</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="smoking" value="past" required>
-                                <span>과거 흡연</span>
+                                <span data-i18n="smokingPast">과거 흡연</span>
                             </label>
                         </div>
                     </div>
                     <div class="input-row">
-                        <label>음주 빈도</label>
+                        <label data-i18n="alcoholLabel">음주 빈도</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="alcohol" value="none" required>
-                                <span>안함</span>
+                                <span data-i18n="alcoholNone">안함</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="alcohol" value="week1" required>
-                                <span>주 1회</span>
+                                <span data-i18n="alcoholWeek1">주 1회</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="alcohol" value="week2_3" required>
-                                <span>주 2~3회</span>
+                                <span data-i18n="alcoholWeek2_3">주 2~3회</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="alcohol" value="daily" required>
-                                <span>거의 매일</span>
+                                <span data-i18n="alcoholDaily">거의 매일</span>
                             </label>
                         </div>
                     </div>
                     <div class="input-row">
-                        <label>운동 빈도</label>
+                        <label data-i18n="exerciseLabel">운동 빈도</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="exercise" value="none" required>
-                                <span>거의 안함</span>
+                                <span data-i18n="exerciseNone">거의 안함</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="exercise" value="week1_2" required>
-                                <span>주 1~2회</span>
+                                <span data-i18n="exerciseWeek1_2">주 1~2회</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="exercise" value="week3_5" required>
-                                <span>주 3~5회</span>
+                                <span data-i18n="exerciseWeek3_5">주 3~5회</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="exercise" value="daily" required>
-                                <span>매일</span>
+                                <span data-i18n="exerciseDaily">매일</span>
                             </label>
                         </div>
                     </div>
                     <div class="input-row">
-                        <label>수면 시간</label>
+                        <label data-i18n="sleepLabel">수면 시간</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="sleep" value="<5" required>
-                                <span>5시간 미만</span>
+                                <span data-i18n="sleepUnder5">5시간 미만</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="sleep" value="5_6" required>
-                                <span>5~6시간</span>
+                                <span data-i18n="sleep5_6">5~6시간</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="sleep" value="7_8" required>
-                                <span>7~8시간</span>
+                                <span data-i18n="sleep7_8">7~8시간</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="sleep" value="9plus" required>
-                                <span>9시간 이상</span>
+                                <span data-i18n="sleep9plus">9시간 이상</span>
                             </label>
                         </div>
                     </div>
@@ -177,78 +209,78 @@
 
                 <!-- 건강 상태 -->
                 <div class="form-group">
-                    <h2>건강 상태</h2>
+                    <h2 data-i18n="sectionHealth">건강 상태</h2>
                     <div class="input-row">
-                        <label>만성질환</label>
+                        <label data-i18n="chronicLabel">만성질환</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" name="chronic" value="none" id="chronic-none">
-                                <span>없음</span>
+                                <span data-i18n="chronicNone">없음</span>
                             </label>
                             <label class="checkbox-label">
                                 <input type="checkbox" name="chronic" value="hypertension">
-                                <span>고혈압</span>
+                                <span data-i18n="chronicHypertension">고혈압</span>
                             </label>
                             <label class="checkbox-label">
                                 <input type="checkbox" name="chronic" value="diabetes">
-                                <span>당뇨</span>
+                                <span data-i18n="chronicDiabetes">당뇨</span>
                             </label>
                             <label class="checkbox-label">
                                 <input type="checkbox" name="chronic" value="hyperlipidemia">
-                                <span>고지혈증</span>
+                                <span data-i18n="chronicHyperlipidemia">고지혈증</span>
                             </label>
                         </div>
                     </div>
                     <div class="input-row">
-                        <label>약 복용 여부</label>
+                        <label data-i18n="medsLabel">약 복용 여부</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="meds" value="yes" required>
-                                <span>예</span>
+                                <span data-i18n="medsYes">예</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="meds" value="no" required>
-                                <span>아니오</span>
+                                <span data-i18n="medsNo">아니오</span>
                             </label>
                         </div>
                     </div>
                     <div class="input-row">
-                        <label>체중 변화</label>
+                        <label data-i18n="weightLabel">체중 변화</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="weight" value="stable" required>
-                                <span>안정</span>
+                                <span data-i18n="weightStable">안정</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="weight" value="increase" required>
-                                <span>증가</span>
+                                <span data-i18n="weightIncrease">증가</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="weight" value="decrease" required>
-                                <span>감소</span>
+                                <span data-i18n="weightDecrease">감소</span>
                             </label>
                         </div>
                     </div>
                     <div class="input-row">
-                        <label>스트레스 수준</label>
+                        <label data-i18n="stressLabel">스트레스 수준</label>
                         <div class="radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="stress" value="low" required>
-                                <span>낮음</span>
+                                <span data-i18n="stressLow">낮음</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="stress" value="mid" required>
-                                <span>보통</span>
+                                <span data-i18n="stressMid">보통</span>
                             </label>
                             <label class="radio-label">
                                 <input type="radio" name="stress" value="high" required>
-                                <span>높음</span>
+                                <span data-i18n="stressHigh">높음</span>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn">건강수명 예측하기</button>
+                <button type="submit" class="submit-btn" data-i18n="submitButton">건강수명 예측하기</button>
             </form>
             
             <!-- 광고 슬롯 (입력 섹션) -->
@@ -260,29 +292,29 @@
         <section id="resultSection" class="result-section hidden">
             <!-- 건강수명 예상 -->
             <div class="result-card main-result">
-                <h2>예상 건강수명</h2>
+                <h2 data-i18n="resultMainTitle">예상 건강수명</h2>
                 <div class="lifespan-display">
                     <span class="age-number" id="predictedAge">--</span>
-                    <span class="age-unit">세</span>
+                    <span class="age-unit" data-i18n="ageUnit">세</span>
                 </div>
-                <p class="years-remaining" id="yearsRemaining">남은 건강 연식: --년</p>
+                <p class="years-remaining" id="yearsRemaining" data-i18n="yearsRemainingLabel">남은 건강 연식: --년</p>
             </div>
 
             <!-- 현재 상태 요약 -->
             <div class="result-card">
-                <h2>당신의 현재 상태</h2>
+                <h2 data-i18n="resultStatusTitle">당신의 현재 상태</h2>
                 <div class="status-summary" id="statusSummary"></div>
                 <div class="score-display">
                     <div class="score-item">
-                        <span class="score-label">건강수명 포인트</span>
+                        <span class="score-label" data-i18n="lifespanScoreLabel">건강수명 포인트</span>
                         <span class="score-value" id="lifespanScore">--</span>
                     </div>
                     <div class="score-item">
-                        <span class="score-label">리스크 포인트</span>
+                        <span class="score-label" data-i18n="riskScoreLabel">리스크 포인트</span>
                         <span class="score-value risk" id="riskScore">--</span>
                     </div>
                     <div class="score-item">
-                        <span class="score-label">회복 가능 포인트</span>
+                        <span class="score-label" data-i18n="improvementScoreLabel">회복 가능 포인트</span>
                         <span class="score-value improvement" id="improvementScore">--</span>
                     </div>
                 </div>
@@ -290,49 +322,366 @@
 
             <!-- 개선하면 늘어나는 건강 포인트 -->
             <div class="result-card">
-                <h2>개선하면 늘어나는 건강 포인트</h2>
+                <h2 data-i18n="resultImprovementTitle">개선하면 늘어나는 건강 포인트</h2>
                 <div class="improvement-list" id="improvementList"></div>
                 <p class="improvement-summary" id="improvementSummary"></p>
             </div>
 
             <!-- 노후 필수 체크리스트 -->
             <div class="result-card">
-                <h2>노후 필수 체크리스트</h2>
+                <h2 data-i18n="checklistTitle">노후 필수 체크리스트</h2>
                 <ul class="checklist" id="checklist">
-                    <li>✓ 연 1회 기본 건강검진</li>
-                    <li>✓ 혈압·혈당 정기 체크</li>
-                    <li>✓ 하루 30분 걷기</li>
-                    <li>✓ 근력운동 주 2회</li>
-                    <li>✓ 인간관계 2명 이상 유지 (사회 고립 리스크 ↓)</li>
-                    <li>✓ 보험/노후 재정 체크</li>
-                    <li>✓ 비상연락망 정리</li>
+                    <li data-i18n="checklistItem1">✓ 연 1회 기본 건강검진</li>
+                    <li data-i18n="checklistItem2">✓ 혈압·혈당 정기 체크</li>
+                    <li data-i18n="checklistItem3">✓ 하루 30분 걷기</li>
+                    <li data-i18n="checklistItem4">✓ 근력운동 주 2회</li>
+                    <li data-i18n="checklistItem5">✓ 인간관계 2명 이상 유지 (사회 고립 리스크 ↓)</li>
+                    <li data-i18n="checklistItem6">✓ 보험/노후 재정 체크</li>
+                    <li data-i18n="checklistItem7">✓ 비상연락망 정리</li>
                 </ul>
             </div>
 
             <!-- 라이트 콘텐츠 -->
             <div class="result-card">
-                <h2>건강 팁</h2>
+                <h2 data-i18n="tipsTitle">건강 팁</h2>
                 <div class="tips-content">
                     <div class="tip-item">
-                        <h3>아침 스트레칭 3가지</h3>
-                        <p>1. 목 돌리기 (좌우 10회)<br>2. 어깨 돌리기 (전후 10회)<br>3. 허리 굽히기 (10초 유지)</p>
+                        <h3 data-i18n="tip1Title">아침 스트레칭 3가지</h3>
+                        <p data-i18n-html="tip1Body">1. 목 돌리기 (좌우 10회)<br>2. 어깨 돌리기 (전후 10회)<br>3. 허리 굽히기 (10초 유지)</p>
                     </div>
                     <div class="tip-item">
-                        <h3>걷기 루틴 20분 버전</h3>
-                        <p>아침 10분 + 저녁 10분 걷기로 시작하세요. 점차 시간을 늘려가며 목표는 하루 30분입니다.</p>
+                        <h3 data-i18n="tip2Title">걷기 루틴 20분 버전</h3>
+                        <p data-i18n-html="tip2Body">아침 10분 + 저녁 10분 걷기로 시작하세요. 점차 시간을 늘려가며 목표는 하루 30분입니다.</p>
                     </div>
                     <div class="tip-item">
-                        <h3>초기 만성질환 신호 체크리스트</h3>
-                        <p>✓ 자주 피곤함<br>✓ 소변 빈도 증가<br>✓ 손발 저림<br>✓ 시야 흐림<br>✓ 체중 급변</p>
+                        <h3 data-i18n="tip3Title">초기 만성질환 신호 체크리스트</h3>
+                        <p data-i18n-html="tip3Body">✓ 자주 피곤함<br>✓ 소변 빈도 증가<br>✓ 손발 저림<br>✓ 시야 흐림<br>✓ 체중 급변</p>
                     </div>
                 </div>
             </div>
 
 
             <!-- 다시 계산하기 버튼 -->
-            <button class="reset-btn" onclick="resetForm()">다시 계산하기</button>
+            <button class="reset-btn" onclick="resetForm()" data-i18n="resetButton">다시 계산하기</button>
         </section>
     </div>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "건강수명 예측 & 노후 준비 대시보드",
+          heroTitle: "🩺 건강수명 예측 & 노후 준비 대시보드",
+          subtitle: "나의 미래 건강 연식과 준비상태를 가볍게 알아보자!",
+          disclaimer: "⚠️ <strong>의료 조언이 아닙니다.</strong> 재미용·참고용 시뮬레이터입니다.",
+          sectionBasic: "기본 정보",
+          ageLabel: "나이",
+          sexLabel: "성별",
+          maleLabel: "남성",
+          femaleLabel: "여성",
+          otherLabel: "기타",
+          sectionHabits: "생활 습관",
+          smokingLabel: "흡연 여부",
+          smokingNever: "안함",
+          smokingRare: "가끔",
+          smokingOften: "자주",
+          smokingPast: "과거 흡연",
+          alcoholLabel: "음주 빈도",
+          alcoholNone: "안함",
+          alcoholWeek1: "주 1회",
+          alcoholWeek2_3: "주 2~3회",
+          alcoholDaily: "거의 매일",
+          exerciseLabel: "운동 빈도",
+          exerciseNone: "거의 안함",
+          exerciseWeek1_2: "주 1~2회",
+          exerciseWeek3_5: "주 3~5회",
+          exerciseDaily: "매일",
+          sleepLabel: "수면 시간",
+          sleepUnder5: "5시간 미만",
+          sleep5_6: "5~6시간",
+          sleep7_8: "7~8시간",
+          sleep9plus: "9시간 이상",
+          sectionHealth: "건강 상태",
+          chronicLabel: "만성질환",
+          chronicNone: "없음",
+          chronicHypertension: "고혈압",
+          chronicDiabetes: "당뇨",
+          chronicHyperlipidemia: "고지혈증",
+          medsLabel: "약 복용 여부",
+          medsYes: "예",
+          medsNo: "아니오",
+          weightLabel: "체중 변화",
+          weightStable: "안정",
+          weightIncrease: "증가",
+          weightDecrease: "감소",
+          stressLabel: "스트레스 수준",
+          stressLow: "낮음",
+          stressMid: "보통",
+          stressHigh: "높음",
+          submitButton: "건강수명 예측하기",
+          resultMainTitle: "예상 건강수명",
+          ageUnit: "세",
+          yearsRemainingLabel: "남은 건강 연식: {years}년",
+          resultStatusTitle: "당신의 현재 상태",
+          lifespanScoreLabel: "건강수명 포인트",
+          riskScoreLabel: "리스크 포인트",
+          improvementScoreLabel: "회복 가능 포인트",
+          resultImprovementTitle: "개선하면 늘어나는 건강 포인트",
+          checklistTitle: "노후 필수 체크리스트",
+          checklistItem1: "✓ 연 1회 기본 건강검진",
+          checklistItem2: "✓ 혈압·혈당 정기 체크",
+          checklistItem3: "✓ 하루 30분 걷기",
+          checklistItem4: "✓ 근력운동 주 2회",
+          checklistItem5: "✓ 인간관계 2명 이상 유지 (사회 고립 리스크 ↓)",
+          checklistItem6: "✓ 보험/노후 재정 체크",
+          checklistItem7: "✓ 비상연락망 정리",
+          tipsTitle: "건강 팁",
+          tip1Title: "아침 스트레칭 3가지",
+          tip1Body:
+            "1. 목 돌리기 (좌우 10회)<br>2. 어깨 돌리기 (전후 10회)<br>3. 허리 굽히기 (10초 유지)",
+          tip2Title: "걷기 루틴 20분 버전",
+          tip2Body:
+            "아침 10분 + 저녁 10분 걷기로 시작하세요. 점차 시간을 늘려가며 목표는 하루 30분입니다.",
+          tip3Title: "초기 만성질환 신호 체크리스트",
+          tip3Body:
+            "✓ 자주 피곤함<br>✓ 소변 빈도 증가<br>✓ 손발 저림<br>✓ 시야 흐림<br>✓ 체중 급변",
+          resetButton: "다시 계산하기",
+          moreTests: "더 많은 테스트 해보기",
+          statusBalancedLabel: "균형형",
+          statusBalancedSummary:
+            "현재 생활습관이 양호합니다. 꾸준히 유지하시면 건강한 노후를 보낼 수 있을 것 같습니다.",
+          statusRecoverLabel: "회복필요형",
+          statusRecoverSummary:
+            "몇 가지 개선하면 더 건강한 노후를 준비할 수 있습니다. 아래 개선 포인트를 참고해보세요.",
+          statusRiskLabel: "리스크높음형",
+          statusRiskSummary:
+            "생활습관 개선이 필요합니다. 지금부터 바꾸면 건강수명을 늘릴 수 있는 여지가 충분합니다.",
+          statusSummaryTemplate: "생활습관: <strong>{status}</strong>",
+          improvementExerciseNone: "운동 주 3회만 해도",
+          improvementExerciseWeek1_2: "운동 주 3~5회로 늘리면",
+          improvementSleep: "수면 7~8시간 맞추면",
+          improvementAlcoholReduce: "음주 줄이면",
+          improvementAlcoholStop: "음주 완전히 끊으면",
+          improvementStressManage: "스트레스 관리하면",
+          improvementStressReduce: "스트레스 더 줄이면",
+          pointsTemplate: "+{points}포인트",
+          improvementListEmpty:
+            "<p style=\\"text-align: center; color: #999;\\">이미 좋은 생활습관을 유지하고 계시네요!</p>",
+          improvementSummaryRange: "지금부터 바꾸면 건강수명 + {min}~{max}년 가능 (재미용)",
+          improvementSummaryDefault: "현재 생활습관을 유지하시면 됩니다!"
+        },
+        en: {
+          metaTitle: "Healthy Lifespan & Retirement Dashboard",
+          heroTitle: "🩺 Healthy Lifespan & Retirement Dashboard",
+          subtitle: "Get a quick read on your future healthy years and retirement readiness.",
+          disclaimer:
+            "⚠️ <strong>Not medical advice.</strong> Entertainment/illustrative simulator.",
+          sectionBasic: "Basic info",
+          ageLabel: "Age",
+          sexLabel: "Sex",
+          maleLabel: "Male",
+          femaleLabel: "Female",
+          otherLabel: "Other",
+          sectionHabits: "Daily habits",
+          smokingLabel: "Smoking",
+          smokingNever: "Never",
+          smokingRare: "Occasionally",
+          smokingOften: "Often",
+          smokingPast: "Past smoker",
+          alcoholLabel: "Drinking frequency",
+          alcoholNone: "None",
+          alcoholWeek1: "Once a week",
+          alcoholWeek2_3: "2-3 times a week",
+          alcoholDaily: "Almost daily",
+          exerciseLabel: "Exercise frequency",
+          exerciseNone: "Rarely",
+          exerciseWeek1_2: "1-2 times a week",
+          exerciseWeek3_5: "3-5 times a week",
+          exerciseDaily: "Daily",
+          sleepLabel: "Sleep duration",
+          sleepUnder5: "<5 hrs",
+          sleep5_6: "5-6 hrs",
+          sleep7_8: "7-8 hrs",
+          sleep9plus: "9+ hrs",
+          sectionHealth: "Health indicators",
+          chronicLabel: "Chronic conditions",
+          chronicNone: "None",
+          chronicHypertension: "High blood pressure",
+          chronicDiabetes: "Diabetes",
+          chronicHyperlipidemia: "High cholesterol",
+          medsLabel: "Medication",
+          medsYes: "Yes",
+          medsNo: "No",
+          weightLabel: "Weight change",
+          weightStable: "Stable",
+          weightIncrease: "Increasing",
+          weightDecrease: "Decreasing",
+          stressLabel: "Stress level",
+          stressLow: "Low",
+          stressMid: "Moderate",
+          stressHigh: "High",
+          submitButton: "Predict healthy lifespan",
+          resultMainTitle: "Predicted healthy lifespan",
+          ageUnit: "yrs",
+          yearsRemainingLabel: "Remaining healthy years: {years} yrs",
+          resultStatusTitle: "Your current status",
+          lifespanScoreLabel: "Healthy lifespan points",
+          riskScoreLabel: "Risk points",
+          improvementScoreLabel: "Recovery potential",
+          resultImprovementTitle: "Points you can gain by improving",
+          checklistTitle: "Retirement readiness checklist",
+          checklistItem1: "✓ Annual basic health checkup",
+          checklistItem2: "✓ Regular blood pressure & sugar checks",
+          checklistItem3: "✓ 30 minutes of walking daily",
+          checklistItem4: "✓ Strength training twice a week",
+          checklistItem5: "✓ Maintain at least 2 social connections (lower isolation risk)",
+          checklistItem6: "✓ Review insurance & retirement funds",
+          checklistItem7: "✓ Update emergency contacts",
+          tipsTitle: "Health tips",
+          tip1Title: "3 morning stretches",
+          tip1Body:
+            "1. Neck circles (10 reps each side)<br>2. Shoulder rolls (10 reps forward/back)<br>3. Waist bends (hold 10 seconds)",
+          tip2Title: "20-minute walking routine",
+          tip2Body:
+            "Start with 10 minutes in the morning + 10 minutes in the evening. Gradually extend to 30 minutes a day.",
+          tip3Title: "Early warning signs of chronic issues",
+          tip3Body:
+            "✓ Frequent fatigue<br>✓ Increased urination<br>✓ Numb hands/feet<br>✓ Blurry vision<br>✓ Rapid weight changes",
+          resetButton: "Recalculate",
+          moreTests: "Try more tests",
+          statusBalancedLabel: "Balanced",
+          statusBalancedSummary:
+            "Your current habits look good. Keep them up for a healthy retirement.",
+          statusRecoverLabel: "Needs recovery",
+          statusRecoverSummary:
+            "A few tweaks can strengthen your retirement readiness—refer to the suggestions below.",
+          statusRiskLabel: "High risk",
+          statusRiskSummary:
+            "Lifestyle changes are needed. Starting now can boost your healthy years.",
+          statusSummaryTemplate: "Lifestyle: <strong>{status}</strong>",
+          improvementExerciseNone: "Just 3 workouts a week",
+          improvementExerciseWeek1_2: "Boost to 3-5 workouts weekly",
+          improvementSleep: "Match 7-8 hours of sleep",
+          improvementAlcoholReduce: "Cut down on drinking",
+          improvementAlcoholStop: "Quit drinking entirely",
+          improvementStressManage: "Manage stress better",
+          improvementStressReduce: "Reduce stress even more",
+          pointsTemplate: "+{points} pts",
+          improvementListEmpty:
+            "<p style=\\"text-align: center; color: #999;\\">You are already maintaining healthy habits!</p>",
+          improvementSummaryRange:
+            "Change now for +{min}~{max} years of healthy living (for fun)",
+          improvementSummaryDefault: "Keep maintaining your current healthy routine!"
+        }
+      };
+      const defaultLang = "en";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function getPack() {
+        return translations[currentLang] || translations.ko;
+      }
+
+      function formatTemplate(template, vars = {}) {
+        if (typeof template !== "string") return "";
+        return template.replace(/\{(.*?)\}/g, (_, key) =>
+          vars[key] !== undefined ? vars[key] : ""
+        );
+      }
+
+      function t(key, vars = {}) {
+        const pack = getPack();
+        const value =
+          (pack && pack[key]) || translations.ko[key] || key || "";
+        return formatTemplate(value, vars);
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.querySelectorAll("[data-i18n], [data-i18n-html]").forEach((el) => {
+          const htmlKey = el.dataset.i18nHtml;
+          const textKey = el.dataset.i18n;
+          const key = textKey || htmlKey;
+          if (!key) return;
+          const rendered = t(key);
+          if (htmlKey !== undefined) {
+            el.innerHTML = rendered;
+          } else {
+            el.textContent = rendered;
+          }
+        });
+        updateMoreTestsText();
+      }
+
+      function updateMoreTestsText() {
+        const moreBtn = document.getElementById("more-tests-btn");
+        if (moreBtn) {
+          moreBtn.textContent = t("moreTests");
+        }
+      }
+
+      window.updateMoreTestsText = updateMoreTestsText;
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (typeof window.refreshHealthDisplay === "function") {
+          window.refreshHealthDisplay();
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function getRegionPreferredLang(fallback = defaultLang) {
+        const intlLocale =
+          typeof Intl === "object" && typeof Intl.DateTimeFormat === "function"
+            ? Intl.DateTimeFormat().resolvedOptions().locale
+            : "";
+        const sources = [
+          ...(navigator.languages || []),
+          navigator.language,
+          navigator.userLanguage,
+          intlLocale,
+        ]
+          .filter(Boolean)
+          .map((locale) => locale.toLowerCase());
+        const hasKorean = sources.some((locale) => locale.startsWith("ko"));
+        return hasKorean ? "ko" : fallback;
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const langParam = params.get("lang");
+        if (supportedLangs.includes(langParam)) {
+          return langParam;
+        }
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) {
+          return stored;
+        }
+        const candidate = getRegionPreferredLang(defaultLang);
+        return supportedLangs.includes(candidate) ? candidate : defaultLang;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document
+          .querySelectorAll(".lang-switch button")
+          .forEach((button) => {
+            button.addEventListener("click", () => {
+              setLang(button.dataset.lang, { updateUrl: true });
+            });
+          });
+        setLang(detectLang(), { updateUrl: false });
+      });
+    </script>
 
     <script src="script.js"></script>
 
@@ -347,7 +696,7 @@
           moreBtn.id = 'more-tests-btn';
           moreBtn.type = 'button';
           moreBtn.dataset.url = targetUrl;
-          moreBtn.textContent = '더 많은 테스트 해보기';
+          moreBtn.textContent = t("moreTests");
           moreBtn.className = 'w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-3';
           moreBtn.addEventListener('click', function () {
             window.open(targetUrl, '_blank', 'noopener');
@@ -357,6 +706,9 @@
             shareButton.insertAdjacentElement('afterend', moreBtn);
           } else if (document.body) {
             document.body.appendChild(moreBtn);
+          }
+          if (typeof updateMoreTestsText === "function") {
+            updateMoreTestsText();
           }
         }
         if (document.readyState === 'loading') {
@@ -380,4 +732,3 @@
     
 </body>
 </html>
-
