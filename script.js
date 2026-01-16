@@ -196,7 +196,7 @@ document.getElementById('healthForm').addEventListener('submit', function(e) {
     // 결과 계산
     const result = calculateHealthLifespan(data);
     const improvements = calculateImprovementPoints(data);
-    const statusInfo = getStatusSummary(result.score, data);
+    const statusInfo = getStatusSummary(result.score);
     
     // 결과 표시
     displayResults(result, improvements, statusInfo, data);
