@@ -85,8 +85,8 @@
         </header>
 
         <div class="lang-switch" role="tablist" aria-label="Language switcher">
-            <button type="button" data-lang="ko" class="active">한국어</button>
-            <button type="button" data-lang="en">English</button>
+            <button type="button" data-lang="ko" class="active" data-i18n-lang="langKorean">한국어</button>
+            <button type="button" data-lang="en" data-i18n-lang="langEnglish">English</button>
         </div>
 
         <!-- 입력 폼 섹션 -->
@@ -446,6 +446,8 @@
             "✓ 자주 피곤함<br>✓ 소변 빈도 증가<br>✓ 손발 저림<br>✓ 시야 흐림<br>✓ 체중 급변",
           resetButton: "다시 계산하기",
           moreTests: "더 많은 테스트 해보기",
+          langKorean: "한국어",
+          langEnglish: "English",
           statusBalancedLabel: "균형형",
           statusBalancedSummary:
             "현재 생활습관이 양호합니다. 꾸준히 유지하시면 건강한 노후를 보낼 수 있을 것 같습니다.",
@@ -548,6 +550,8 @@
             "✓ Frequent fatigue<br>✓ Increased urination<br>✓ Numb hands/feet<br>✓ Blurry vision<br>✓ Rapid weight changes",
           resetButton: "Recalculate",
           moreTests: "Try more tests",
+          langKorean: "Korean",
+          langEnglish: "English",
           statusBalancedLabel: "Balanced",
           statusBalancedSummary:
             "Your current habits look good. Keep them up for a healthy retirement.",
@@ -611,6 +615,13 @@
             el.innerHTML = rendered;
           } else {
             el.textContent = rendered;
+          }
+        });
+        // 언어 스위치 버튼 번역
+        document.querySelectorAll("[data-i18n-lang]").forEach((el) => {
+          const langKey = el.dataset.i18nLang;
+          if (langKey) {
+            el.textContent = t(langKey);
           }
         });
         updateMoreTestsText();
