@@ -467,7 +467,7 @@
           improvementStressReduce: "스트레스 더 줄이면",
           pointsTemplate: "+{points}포인트",
           improvementListEmpty:
-            "<p style=\\"text-align: center; color: #999;\\">이미 좋은 생활습관을 유지하고 계시네요!</p>",
+            '<p style="text-align: center; color: #999;">이미 좋은 생활습관을 유지하고 계시네요!</p>',
           improvementSummaryRange: "지금부터 바꾸면 건강수명 + {min}~{max}년 가능 (재미용)",
           improvementSummaryDefault: "현재 생활습관을 유지하시면 됩니다!"
         },
@@ -571,7 +571,7 @@
           improvementStressReduce: "Reduce stress even more",
           pointsTemplate: "+{points} pts",
           improvementListEmpty:
-            "<p style=\\"text-align: center; color: #999;\\">You are already maintaining healthy habits!</p>",
+            '<p style="text-align: center; color: #999;">You are already maintaining healthy habits!</p>',
           improvementSummaryRange:
             "Change now for +{min}~{max} years of healthy living (for fun)",
           improvementSummaryDefault: "Keep maintaining your current healthy routine!"
@@ -703,8 +703,8 @@
           moreBtn.type = 'button';
           moreBtn.dataset.url = targetUrl;
           // t 함수가 전역 변수로 설정되었는지 확인
-          const tFunc = window.t || (() => "더 많은 테스트 해보기");
-          moreBtn.textContent = tFunc("moreTests");
+          const t = window.t || (() => "더 많은 테스트 해보기");
+          moreBtn.textContent = t("moreTests");
           moreBtn.className = 'w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-3';
           moreBtn.addEventListener('click', function () {
             window.open(targetUrl, '_blank', 'noopener');

@@ -97,17 +97,17 @@ function calculateHealthLifespan(data) {
 function calculateImprovementPoints(data) {
     const improvements = [];
     // 전역 t 함수 사용
-    const tFunc = window.t || ((key) => key);
+    const t = window.t || ((key) => key);
     
     if (data.exercise === "none") {
         improvements.push({ 
-            text: tFunc("improvementExerciseNone"), 
+            text: t("improvementExerciseNone"), 
             points: 25, 
             current: scoring.exercise.none 
         });
     } else if (data.exercise === "week1_2") {
         improvements.push({ 
-            text: tFunc("improvementExerciseWeek1_2"), 
+            text: t("improvementExerciseWeek1_2"), 
             points: 10, 
             current: scoring.exercise.week1_2 
         });
@@ -115,7 +115,7 @@ function calculateImprovementPoints(data) {
     
     if (data.sleep === "<5" || data.sleep === "5_6") {
         improvements.push({ 
-            text: tFunc("improvementSleep"), 
+            text: t("improvementSleep"), 
             points: 15, 
             current: scoring.sleep[data.sleep] 
         });
@@ -123,13 +123,13 @@ function calculateImprovementPoints(data) {
     
     if (data.alcohol === "daily" || data.alcohol === "week2_3") {
         improvements.push({ 
-            text: tFunc("improvementAlcoholReduce"), 
+            text: t("improvementAlcoholReduce"), 
             points: 10, 
             current: scoring.alcohol[data.alcohol] 
         });
     } else if (data.alcohol === "week1") {
         improvements.push({ 
-            text: tFunc("improvementAlcoholStop"), 
+            text: t("improvementAlcoholStop"), 
             points: 10, 
             current: scoring.alcohol.week1 
         });
@@ -137,13 +137,13 @@ function calculateImprovementPoints(data) {
     
     if (data.stress === "high") {
         improvements.push({ 
-            text: tFunc("improvementStressManage"), 
+            text: t("improvementStressManage"), 
             points: 10, 
             current: scoring.stress.high 
         });
     } else if (data.stress === "mid") {
         improvements.push({ 
-            text: tFunc("improvementStressReduce"), 
+            text: t("improvementStressReduce"), 
             points: 10, 
             current: scoring.stress.mid 
         });
@@ -219,17 +219,17 @@ document.getElementById('healthForm').addEventListener('submit', function(e) {
 // 결과 표시 함수
 function displayResults(result, improvements, statusInfo, data) {
     // 전역 t 함수 사용
-    const tFunc = window.t || ((key, vars) => key);
+    const t = window.t || ((key, vars) => key);
     
     document.getElementById('predictedAge').textContent = result.predictedHealthSpan;
     document.getElementById('yearsRemaining').textContent = 
-        tFunc('yearsRemainingLabel', { years: result.yearsRemaining });
+        t('yearsRemainingLabel', { years: result.yearsRemaining });
     
     const statusSummaryEl = document.getElementById('statusSummary');
-    const statusLabel = tFunc(statusInfo.typeKey);
-    const statusDescription = tFunc(statusInfo.summaryKey);
+    const statusLabel = t(statusInfo.typeKey);
+    const statusDescription = t(statusInfo.summaryKey);
     statusSummaryEl.innerHTML = `
-        ${tFunc('statusSummaryTemplate', { status: statusLabel })}<br>
+        ${t('statusSummaryTemplate', { status: statusLabel })}<br>
         ${statusDescription}
     `;
     
@@ -246,22 +246,22 @@ function displayResults(result, improvements, statusInfo, data) {
         improvementListEl.innerHTML = improvements.map(imp => `
             <div class="improvement-item">
                 <strong>${imp.text}</strong>
-                <span class="points">${tFunc('pointsTemplate', { points: imp.points })}</span>
+                <span class="points">${t('pointsTemplate', { points: imp.points })}</span>
             </div>
         `).join('');
     } else {
-        improvementListEl.innerHTML = tFunc('improvementListEmpty');
+        improvementListEl.innerHTML = t('improvementListEmpty');
     }
     
     const improvementSummaryEl = document.getElementById('improvementSummary');
     if (improvementTotal > 0) {
         const additionalYears = Math.round(improvementTotal / 5);
-        improvementSummaryEl.textContent = tFunc('improvementSummaryRange', {
+        improvementSummaryEl.textContent = t('improvementSummaryRange', {
             min: additionalYears,
             max: additionalYears + 2
         });
     } else {
-        improvementSummaryEl.textContent = tFunc('improvementSummaryDefault');
+        improvementSummaryEl.textContent = t('improvementSummaryDefault');
     }
 
     window.healthLastDisplay = {
