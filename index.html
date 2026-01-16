@@ -594,6 +594,10 @@
           (pack && pack[key]) || translations.ko[key] || key || "";
         return formatTemplate(value, vars);
       }
+      
+      // 전역 변수로 설정하여 script.js에서 접근 가능하게
+      window.t = t;
+      window.currentLang = currentLang;
 
       function applyTranslations() {
         document.title = t("metaTitle");
@@ -624,6 +628,8 @@
       function setLang(lang, options = {}) {
         const nextLang = translations[lang] ? lang : defaultLang;
         currentLang = nextLang;
+        window.currentLang = currentLang;
+        window.t = t; // 전역 변수 업데이트
         document.documentElement.lang = nextLang;
         localStorage.setItem("preferredLang", nextLang);
         document.querySelectorAll(".lang-switch button").forEach((button) => {
@@ -685,14 +691,16 @@
           moreBtn.id = 'more-tests-btn';
           moreBtn.type = 'button';
           moreBtn.dataset.url = targetUrl;
-          moreBtn.textContent = t("moreTests");
+          // t 함수가 전역 변수로 설정되었는지 확인
+          const tFunc = window.t || (() => "더 많은 테스트 해보기");
+          moreBtn.textContent = tFunc("moreTests");
           moreBtn.className = 'w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-3';
           moreBtn.addEventListener('click', function () {
             window.open(targetUrl, '_blank', 'noopener');
           });
-          const shareButton = document.querySelector("button#share-btn, button#shareBtn, button[id*=\"share\"]");
-          if (shareButton) {
-            shareButton.insertAdjacentElement('afterend', moreBtn);
+          const resetBtn = document.querySelector("button.reset-btn, button[onclick*='resetForm']");
+          if (resetBtn && resetBtn.parentNode) {
+            resetBtn.parentNode.insertBefore(moreBtn, resetBtn.nextSibling);
           } else if (document.body) {
             document.body.appendChild(moreBtn);
           }
@@ -700,10 +708,12 @@
             updateMoreTestsText();
           }
         }
+        // DOMContentLoaded 후 실행하여 t 함수가 정의된 후 실행
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', addMoreTestsButton);
         } else {
-          addMoreTestsButton();
+          // 약간의 지연을 두어 t 함수가 정의되도록 함
+          setTimeout(addMoreTestsButton, 100);
         }
       })();
     </script>
