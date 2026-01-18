@@ -198,15 +198,16 @@ document.getElementById('healthForm').addEventListener('submit', function(e) {
     const improvements = calculateImprovementPoints(data);
     const statusInfo = getStatusSummary(result.score);
     
-    // 결과 표시
-    displayResults(result, improvements, statusInfo, data);
-    
-    // 입력 섹션 숨기기, 결과 섹션 표시
-    document.getElementById('inputSection').classList.add('hidden');
-    document.getElementById('resultSection').classList.remove('hidden');
-    
-    // 결과 섹션으로 스크롤
-    document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+    // result.html로 리다이렉트
+    const params = new URLSearchParams({
+        age: data.age.toString(),
+        sex: data.sex || '',
+        predicted: result.predictedHealthSpan.toString(),
+        remaining: result.yearsRemaining.toString(),
+        score: result.score.toString(),
+        status: statusInfo.typeKey || ''
+    });
+    window.location.href = `result.html?${params.toString()}`;
 });
 
 // 결과 표시 함수
